@@ -1,0 +1,36 @@
+require 'capybara'
+
+class FacebookParser
+  include Capybara::DSL
+
+  def initialize
+    Capybara.default_driver = :selenium
+  end
+
+  def find_friends
+    visit "http://www.facebook.com/jpelekh"
+
+    if session.has_content?("Demyd")
+     puts "All shiny, captain!"
+   else
+     puts ":( no tagline fonud, possibly something's broken"
+     exit(-1)
+  end
+end 
+ 
+friends = FacebookParser.new
+friends.find_friends
+
+#session = Capybara::Session.new(:selenium)
+#session.visit "http://www.facebook.com/jpelekh"
+
+#session.fill_in 'email', :with => 'jpelekh@mail.ru'
+#session.fill_in 'pass', :with => 'Julka32'
+#session.click_button 'u_0_0'
+
+#if session.has_content?("Demyd")
+  #puts "All shiny, captain!"
+#else
+  #puts ":( no tagline fonud, possibly something's broken"
+  #exit(-1)
+#end

@@ -1,0 +1,10 @@
+require_relative '../dou_scrape'
+
+
+RSpec.describe DouParser do
+ 
+  it 'returns an array of Dou titles' do
+    articles = DouParser.new
+  expect(articles.find_articles).to be('О переезде и жизни в Польше')	
+  end
+end

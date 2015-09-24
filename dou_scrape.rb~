@@ -1,0 +1,17 @@
+require 'capybara'
+
+class DouParser
+  include Capybara::DSL
+  Capybara.default_driver = :selenium
+
+  def find_titles
+    visit "http://dou.ua/lenta/"
+
+    page.all(:xpath, "//article/h2/a").each do |i|
+      puts i.text
+    end
+  end
+end 
+ 
+articles = DouParser.new
+articles.find_titles

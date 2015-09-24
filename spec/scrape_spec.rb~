@@ -1,0 +1,10 @@
+require_relative '../scrape'
+require 'capybara'
+
+RSpec.describe FacebookParser do
+ 
+ it 'returns an array of Facebook friends'do
+   friends = FacebookParser.new.find_friends
+ expect(friends).to include('Demyd Dzyuban', 'Iryna Peretiatko')	
+ end
+end
